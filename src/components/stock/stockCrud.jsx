@@ -42,6 +42,7 @@ export default class StockCrud extends Component{
 
     clear(){
         this.setState({stock: initialState.stock})
+        this.nome_prod = this.state.stock.product.nome_prod
     }
 
     save(){
