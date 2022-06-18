@@ -15,4 +15,3 @@ O padrão é uma string: "XXXX-AAAA-BBBB-CCCC"
 O resultado deve ser armazenado em uma variável. Por exemplo:
 let id = generarId()
 id vale ~ abc1-bb12-234a-bcc2
-*/
