@@ -66,6 +66,22 @@ export default class StockCrud extends Component{
             })
     }
 
+    load(stock){
+        this.setState({ stock })
+    }
+
+    remove(stock){
+        
+        axios.delete(`${baseUrl}/${stock._id}`)
+        
+      
+        .then(resp => {
+            const list = this.getUpdatedList(resp.data,true)
+            this.setState({ stock: initialState.stock, list })
+        })
+
+    }
+
     getUpdatedList(stock, add = true){
         const list = this.state.list.filter(u => u.id !== stock._id)
         if(add)
@@ -138,18 +154,9 @@ export default class StockCrud extends Component{
         )
     }
 
-    load(stock){
-        this.setState({ stock })
-    }
+    
 
-    remove(stock){
-        axios.delete(`${baseUrl}/${stock._id}`)
-
-        .then(resp => {
-            const list = this.getUpdatedList(resp.data)
-            this.setState({ stock: initialState.stock, list })
-        })
-    }
+    
     
     renderTable(){
         return(
