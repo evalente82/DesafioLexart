@@ -4,7 +4,7 @@ import Main from "../templates/Main";
 const headerProps = {
     icon: 'calculator',
     title: 'Hashmap',
-    subtitle:''
+    subtitle:'const numbers = [1, 2, 3, 4, 5]'
 }
 
 /*
@@ -19,107 +19,89 @@ Função de multiplicação - Idem
 A função de divisão aceita dois parâmetros: a e b.
 
 */
-const Operacoes = (props) => {
-    
-    const [soma, setSoma] = useState()
-    const [subtracao, setSubtracao] = useState()
-    const [multiplicar, setMultiplicar] = useState()
-    const [dividir, setDividir] = useState()
 
-    
+const numbers = [1, 2, 3, 4, 5]
+
+var calc = {
+    somar: function (arr){
+        let num = arr[0]
+                for(let i = 1; i <arr.length; i++){
+                    num += arr[i]
+                }
+                return num
+            },
+            diminuir: function (arr){
+                let num = arr[0]
+                for(let i = 1; i <arr.length; i++){
+                    num -= arr[i]
+                }
+                return num
+            },
+            multiplicar: function (arr){
+                let num = arr[0]
+                for(let i = 1; i <arr.length; i++){
+                    num *= arr[i]
+                }
+                return num
+            },
+            dividir: function ( a, b ){
+                let result
+                if(a === 0){
+                    result = 'não pode dividir por 0'
+                }
+                else{
+                    result = a / b
+                }
+            return result
+        }
+    }
+
+const split = function (string) {
+    string = string.split(' ')
+    return string
+}
+let texto = ``
+const Operacoes = (props) => {
+
     return(
         <div className='display-5'>
             <div>
                     <label>funções elementares de adição, subtração, multiplicação e divisão.</label>
                     <div>
-                    <label>Digite os números que deseja SOMAR</label>
-                            <input type="text" className="form-control"
-                            name="txtSoma"
-                            onChange={e => setSoma(e.target.value)}                        
-                            placeholder="Digite os números da soma ..." />
-                        <p/>
-                        <button className="btn btn-primary"
-                        //onClick={() => setSoma(soma.value)}
-                        >
-                                Somar
-                            </button> 
-                            <span className="text">{ soma}</span>                       
-                        <p></p>
-                        <h1>
-                            <span className="text">{}</span>
-                        </h1>
-                            <div>
-                                <button className="btn btn-danger">
-                                        Limpar
-                                </button> 
-                            </div>
-                    </div>  
-                    <p/>
+                        <label>Somar</label>
+                    </div>
                     <div>
-                    <label>Digite os números que deseja SUBTRAIR</label>
-                            <input type="number" className="form-control"
-                            name="quantity"                            
-                            placeholder="Digite os números da subtração ..." />
-                        <p/>
-                        <button className="btn btn-primary">
-                                Subtrair
-                            </button>                        
-                        <p></p>
-                        <h1>
-                            <span className="text">{subtracao}</span>
-                        </h1>
-                            <div>
-                                <button className="btn btn-danger">
-                                        Limpar
-                                </button> 
-                            </div>
-                    </div> 
-                    <p/>
+                        <label>{calc.somar(numbers)}</label>
+                    </div>
                     <div>
-                    <label>Digite os números que deseja MULTIPLICAR</label>
-                            <input type="number" className="form-control"
-                            name="quantity"                            
-                            placeholder="Digite os números da multiplicação ..." />
-                            <p/>
-                        <button className="btn btn-primary">
-                                Multiplicar
-                            </button>                        
-                        <p></p>
-                        <h1>
-                            <span className="text">{multiplicar}</span>
-                        </h1>
-                            <div>
-                                <button className="btn btn-danger">
-                                        Limpar
-                                </button> 
-                            </div>
-                    </div> 
-                    <p/>
+                        <label>Subtrair</label>
+                    </div>
                     <div>
-                    <label>Digite os 2 números que deseja DIVIDIR</label>
-                            <input type="number" className="form-control"
-                            name="quantity"                            
-                            placeholder="Digite 2 números ..." />
-                            <p/>
-                        <button className="btn btn-primary">
-                                Dividir
-                            </button>                        
-                        <p></p>
-                        <h1>
-                            <span className="text">{dividir}</span>
-                        </h1>
-                            <div>
-                                <button className="btn btn-danger">
-                                        Limpar
-                                </button> 
-                            </div>
-                    </div>                   
-                </div>
+                        <label>{calc.diminuir(numbers)}</label>
+                    </div>
+                    <div>
+                        <label>Multiplicar</label>
+                    </div>
+                    <div>
+                        <label>{calc.multiplicar(numbers)}</label>
+                    </div>
+                    <div>
+                        <label>Dividir</label>
+                    </div>
+                    <div>
+                        <label>{calc.dividir(10,2)}</label>
+                    </div>
+                    <div>
+                        <label>{calc.dividir(0,5)}</label>
+                    </div>
+            </div>
         </div>
+                        
         
     )
 }
 
+console.log(calc.somar(numbers))
 
 const Hasmap = (props) => {
     return (
